@@ -1,6 +1,7 @@
-import { serverError, ok, badRequest } from './helpers.js'
+import { badRequest, notFound, ok, serverError } from './helpers.js'
 import { GetUserByIdUseCase } from '../use-cases/get-user-by-id.js'
 import validator from 'validator'
+
 export class GetUserByIdController {
     async execute(httpRequest) {
         try {
@@ -8,7 +9,7 @@ export class GetUserByIdController {
 
             if (!isIdValid) {
                 return badRequest({
-                    message: 'the provider id is not valid',
+                    message: 'The provided id is not valid.',
                 })
             }
 
@@ -17,6 +18,13 @@ export class GetUserByIdController {
             const user = await getUserByIdUseCase.execute(
                 httpRequest.params.userId,
             )
+
+            if (!user) {
+                return notFound({
+                    message: 'User not found.',
+                })
+            }
+
             return ok(user)
         } catch (error) {
             console.error(error)

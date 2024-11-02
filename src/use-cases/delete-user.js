@@ -6,6 +6,6 @@ export class DeleteUserUseCase {
 
         const deletedUser = postgresDeleteUserRepository.execute(userId)
 
-        return deletedUser
+        return deletedUser[0]
     }
 }

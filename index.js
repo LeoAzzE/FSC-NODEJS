@@ -1,5 +1,5 @@
 import 'dotenv/config.js'
-import express, { request, response } from 'express'
+import express from 'express'
 import {
     makeCreateUserController,
     makeDeleteUserController,

@@ -16,6 +16,7 @@ export class CreateTransactionUseCase {
         }
 
         const transactionId = uuidV4()
+
         const transaction = await this.createTransactionRepository.execute({
             ...createTransactionParams,
             id: transactionId,

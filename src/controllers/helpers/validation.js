@@ -3,10 +3,17 @@ import validator from 'validator'
 
 export const checkIfIdIsvalid = (id) => validator.isUUID(id)
 
-export const invalidIdResponse = () =>
-    badRequest({
+export const invalidIdResponse = () => {
+    return badRequest({
         message: 'The provided id is not valid',
     })
+}
+
+export const requiredFieldIsMissingResponse = (field) => {
+    return badRequest({
+        message: `The field ${field} is required`,
+    })
+}
 
 export const checkIfIsString = (value) => typeof value === 'string'
 

@@ -1,4 +1,4 @@
-import { CreateTransactionController } from '../../controllers/index.js'
+import { CreateTransactionController } from '../../controllers/transaction/create-transaction.js'
 import {
     PostgresCreateTransactionRepository,
     PostgresGetUserByIdRepository,

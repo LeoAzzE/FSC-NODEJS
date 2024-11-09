@@ -1,22 +1,21 @@
--- Criação da tabela users
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS users(
     ID UUID PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );
 
--- Criação do tipo enumerado transaction_type
 DO $$
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM pg_type WHERE typname = 'transaction_type') THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'transaction_type') THEN
         CREATE TYPE transaction_type AS ENUM ('EARNING', 'EXPENSE', 'INVESTMENT');
     END IF;
 END$$;
 
--- Criação da tabela transactions
-CREATE TABLE IF NOT EXISTS transactions (
+CREATE TYPE transaction_type AS ENUM ('EARNING', 'EXPENSE', 'INVESTMENT');
+
+CREATE TABLE IF NOT EXISTS transactions(
     ID UUID PRIMARY KEY,
     user_id UUID REFERENCES users(ID) ON DELETE CASCADE NOT NULL,
     name VARCHAR(100) NOT NULL,

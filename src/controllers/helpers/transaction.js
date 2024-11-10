@@ -12,15 +12,17 @@ export const checkIfAmountIsValid = (amount) => {
     })
 }
 
-export const checkIfTypeIsValid = (type) =>
-    ['EARNING', 'EXPENSE', 'INVESTMENT'].includes(type)
+export const checkIfTypeIsValid = (type) => {
+    return ['EARNING', 'EXPENSE', 'INVESTMENT'].includes(type)
+}
 
-export const invalidAmountResponse = () =>
-    badRequest({
+export const invalidAmountResponse = () => {
+    return badRequest({
         message: 'The amount must be a valid currency',
     })
+}
 export const invalidTypeResponse = () => {
-    badRequest({
+    return badRequest({
         message: 'The type must be EARNING, EXPENSE, or INVESTMENT',
     })
 }

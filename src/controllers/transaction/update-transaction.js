@@ -12,7 +12,7 @@ import {
 
 export class UpdateTransactionController {
     constructor(updateTransactionUseCase) {
-        this.updateTransactionController = updateTransactionUseCase
+        this.updateTransactionUseCase = updateTransactionUseCase
     }
     async execute(httpRequest) {
         try {
@@ -52,7 +52,7 @@ export class UpdateTransactionController {
                 }
             }
 
-            const transaction = await this.updateTransactionController.execute(
+            const transaction = await this.updateTransactionUseCase.execute(
                 httpRequest.params.transactionId,
                 params,
             )

@@ -1,6 +1,6 @@
 import { PostgresHelper } from '../../../db/postgres/helper.js'
 
-export class PostgresGetUserBalance {
+export class PostgresGetUserBalanceRepository {
     async execute(userId) {
         const balance = await PostgresHelper.query(
             `SELECT
@@ -16,6 +16,9 @@ export class PostgresGetUserBalance {
                 WHERE user_id = $1;`,
             [userId],
         )
-        return balance[0]
+        return {
+            userId,
+            ...balance[0],
+        }
     }
 }

@@ -1,6 +1,6 @@
 import { userNotFoundError } from '../../errors/users.js'
 
-export class PostgresGetUserBalanceUseCase {
+export class GetUserBalanceUseCase {
     constructor(getUserBalanceRepository, getUserByIdRepository) {
         this.getUserBalanceRepository = getUserBalanceRepository
         this.getUserByIdRepository = getUserByIdRepository

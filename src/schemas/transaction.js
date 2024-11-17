@@ -45,3 +45,9 @@ export const createTransactionSchema = z.object({
             }),
         ),
 })
+
+export const updateTransactionSchema = createTransactionSchema
+    .partial()
+    .strict({
+        message: 'Some Provided field is not allowed',
+    })
